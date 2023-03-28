@@ -1,5 +1,5 @@
 products
-    -flag [new,feature,slae]
+    -flag [new,feature,sale]
     -name
     -image
     -price

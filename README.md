@@ -1,0 +1,2 @@
+# Amazone_Django_Project
+Amazone_Django_Project

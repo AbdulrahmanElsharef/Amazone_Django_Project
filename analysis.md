@@ -1,0 +1,26 @@
+products
+    -flag [new,feature,slae]
+    -name
+    -image
+    -price
+    -reviews
+            -user
+            -product
+            -rate
+            -review
+            -date
+    -brand
+            -name
+            -image
+            -slug
+    -sku
+    -subtitle
+    -tag
+    -images
+            -product
+            -image
+            -
+    -descriptions
+    -specifications
+    -slug
+

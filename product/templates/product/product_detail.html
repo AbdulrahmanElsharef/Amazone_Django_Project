@@ -1,4 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block css%}
+<link rel="stylesheet" href="{% static 'en/css/product-details.css' %}">
+{% endblock css%}
+
 {% block body %}
 
 <!--=====================================
@@ -10,7 +16,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
             <li class="breadcrumb-item"><a href="shop-4column.html">shop-4column</a></li>
-            <li class="breadcrumb-item active" aria-current="page">product-simple</li>
+            <li class="breadcrumb-item active" aria-current="page">{{object.name}}</li>
         </ol>
     </div>
 </section>
@@ -32,10 +38,12 @@
                         <label class="details-label off">-10%</label>
                     </div>
                     <ul class="details-preview">
-                        <li><img src="{{object.image.url}}" alt="product"></li>
+                        {% for img in object.product_images.all%}
+                        <li><img src="{{img.image.url}}" alt="product"></li>
+                        {% endfor %}
                     </ul>
                     <ul class="details-thumb">
-                        {% for img in object.product_images.all %}
+                        {% for img in object.product_images.all%}
                         <li><img src="{{img.image.url}}" alt="product"></li>
                         {% endfor %}
                     </ul>
@@ -43,27 +51,27 @@
             </div>
             <div class="col-lg-6">
                 <!-- <ul class="product-navigation">
-                            <li class="product-nav-prev">
-                                <a href="#">
-                                    <i class="icofont-arrow-left"></i>
-                                    prev product
-                                    <span class="product-nav-popup">
-                                        <img src="images/product/02.jpg" alt="product">
-                                        <small>green chilis</small>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="product-nav-next">
-                                <a href="#">
-                                    next product
-                                    <i class="icofont-arrow-right"></i>
-                                    <span class="product-nav-popup">
-                                        <img src="images/product/03.jpg" alt="product">
-                                        <small>green chilis</small>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul> -->
+                    <li class="product-nav-prev">
+                        <a href="#">
+                            <i class="icofont-arrow-left"></i>
+                            prev product
+                            <span class="product-nav-popup">
+                                <img src="images/product/02.jpg" alt="product">
+                                <small>green chilis</small>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="product-nav-next">
+                        <a href="#">
+                            next product
+                            <i class="icofont-arrow-right"></i>
+                            <span class="product-nav-popup">
+                                <img src="images/product/03.jpg" alt="product">
+                                <small>green chilis</small>
+                            </span>
+                        </a>
+                    </li>
+                </ul> -->
                 <div class="details-content">
                     <h3 class="details-name"><a href="#">{{object.name}}</a></h3>
                     <div class="details-meta">
@@ -79,15 +87,17 @@
                         <a href="#">(3 reviews)</a>
                     </div>
                     <h3 class="details-price">
-
+                        <!-- <del>$38.00</del> -->
                         <span>${{object.price}}<small>/per kilo</small></span>
                     </h3>
-                    <p class="details-desc">{{object.subtitle}}</p>
+                    <p class="details-desc">{{object.subtitle}}
+                    </p>
                     <div class="details-list-group">
                         <label class="details-list-title">tags:</label>
                         <ul class="details-tag-list">
-                            {}
-                            <li><a href="#">organic</a></li>
+                            {% for tag in object.tag.all%}
+                            <li><a href="#">{{tag}}</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                     <div class="details-list-group">
@@ -140,44 +150,22 @@
                 <div class="product-details-frame">
                     <h3 class="frame-title">Description</h3>
                     <div class="tab-descrip">
-                        <p>{{object.description}}</p>
+                        <p>{{object.descriptions}}</p>
                     </div>
                 </div>
-                <!-- <div class="product-details-frame">
-                            <h3 class="frame-title">Spacification</h3>
-                            <table class="table table-bordered">
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Product code</th>
-                                        <td>SKU: 101783</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Weight</th>
-                                        <td>1kg, 2kg</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Styles</th>
-                                        <td>@Girly</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Properties</th>
-                                        <td>Short Dress</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div> -->
+
                 <div class="product-details-frame">
                     <h3 class="frame-title">Reviews (2)</h3>
                     <ul class="review-list">
-                        {% for item in object.product_reviews.all%}
+                        {% for rev in object.product_reviews.all%}
                         <li class="review-item">
                             <div class="review-media">
                                 <a class="review-avatar" href="#">
                                     <img src="images/avatar/04.jpg" alt="review">
                                 </a>
                                 <h5 class="review-meta">
-                                    <a href="#">{{item.user}}</a>
-                                    <span>{{item.date}}</span>
+                                    <a href="#">{{rev.user}}</a>
+                                    <span>{{rev.date}}</span>
                                 </h5>
                             </div>
                             <ul class="review-rating">
@@ -187,7 +175,7 @@
                                 <li class="icofont-ui-rating"></li>
                                 <li class="icofont-ui-rate-blank"></li>
                             </ul>
-                            <p class="review-desc">{{item.review}}</p>
+                            <p class="review-desc">{{rev.review}}</p>
                             <form class="review-reply">
                                 <input type="text" placeholder="reply your thoughts">
                                 <button><i class="icofont-reply"></i>reply</button>
@@ -752,4 +740,5 @@
 <!--=====================================
                  PRODUCT RELATED PART END
         =======================================-->
+
 {% endblock body %}

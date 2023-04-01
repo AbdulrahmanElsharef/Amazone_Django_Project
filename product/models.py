@@ -56,4 +56,7 @@ class ProductReview(models.Model):
     def __str__(self):
         return str(self.product)
     
+    def TotalRate(self):
+        return sum(self.rate)/self.rate
+    
 # __________________________________________________________

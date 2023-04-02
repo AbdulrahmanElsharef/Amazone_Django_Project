@@ -8,6 +8,15 @@ class BrandList(ListView):
     model=Brand
     paginate_by=20
     extra_context={'objects_count':Brand.objects.all().count()}
+
+class BrandDetail(ListView):
+    model=Product
+    template_name = 'product/brand_detail.html'
+    paginate_by=30
+    extra_context={'objects_count':Product.objects.all().count()}
+
+    
+
 class ProductList(ListView):
     model=Product
     paginate_by=30

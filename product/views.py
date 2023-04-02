@@ -1,9 +1,13 @@
 from django.shortcuts import render,redirect
-from .models import Product
+from .models import *
 # Create your views here.
 from django.views.generic import ListView,DetailView
 from .forms import ProductReviewForm
 
+class BrandList(ListView):
+    model=Brand
+    paginate_by=20
+    extra_context={'objects_count':Brand.objects.all().count()}
 class ProductList(ListView):
     model=Product
     paginate_by=30

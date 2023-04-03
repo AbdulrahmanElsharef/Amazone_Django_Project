@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block css%}
-<link rel="stylesheet" href="{% static 'en/css/brand-single' %}">
-{% endblock css%}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'en/css/brand-single.css' %}">
+{% endblock css %}
+
 
 {% block body %}
-
 <!--=====================================
                     BANNER PART START
         =======================================-->
@@ -29,9 +30,9 @@
                   BRAND SINGLE PART START
         =======================================-->
 <div class="brand-single">
-    <a href="#"><img src="images/brand/02.jpg" alt="brand"></a>
+    <a href="#"><img src="{{brand.image.url}}" alt="brand"></a>
     <a href="#">
-        <h3>vegan lovers</h3>
+        <h3>{{brand.name}}</h3>
     </a>
     <ul>
         <li class="fas fa-star active"></li>
@@ -41,7 +42,7 @@
         <li class="fas fa-star"></li>
         <li class="total">(163 ratings)</li>
     </ul>
-    <p>(45 items)</p>
+    <p>({{object_list.count}} items)</p>
 </div>
 <!--=====================================
                   BRAND SINGLE PART END
@@ -57,12 +58,8 @@
             <div class="col-lg-12">
                 <div class="top-filter">
                     <div class="filter-show">
-                        <label class="filter-label">Show :</label>
-                        <select class="form-select filter-select">
-                            <option value="1">12</option>
-                            <option value="2">24</option>
-                            <option value="3">36</option>
-                        </select>
+                        <label class="filter-label">Show : {{object_list.count}} items</label>
+
                     </div>
                     <div class="filter-short">
                         <label class="filter-label">Short by :</label>
@@ -92,8 +89,8 @@
                         </a>
                         <div class="product-widget">
                             <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                            <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8"
-                                class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                            <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play"
+                                data-autoplay="true" data-vbtype="video"></a>
                             <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal"
                                 data-bs-target="#product-view"></a>
                         </div>
@@ -119,12 +116,9 @@
                             <span>add</span>
                         </button>
                         <div class="product-action">
-                            <button class="action-minus" title="Quantity Minus"><i
-                                    class="icofont-minus"></i></button>
-                            <input class="action-input" title="Quantity Number" type="text" name="quantity"
-                                value="1">
-                            <button class="action-plus" title="Quantity Plus"><i
-                                    class="icofont-plus"></i></button>
+                            <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
+                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
+                            <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
                         </div>
                     </div>
                 </div>
@@ -134,7 +128,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="bottom-paginate">
-                    <p class="page-info">Showing {{object_list.count}} of {{objects_count}} Results</p>
+                    <p class="page-info">Showing {{object_list.count}} Results Of Items</p>
                     <ul class="pagination">
                         {% if page_obj.has_previous %}
                         <li class="page-item">

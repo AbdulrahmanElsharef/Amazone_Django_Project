@@ -12,7 +12,7 @@ class BrandList(ListView):
 class BrandDetail(ListView):
     model=Product
     template_name = 'product/brand_detail.html'
-    paginate_by=30
+    paginate_by=10
     extra_context={'objects_count':Product.objects.all().count()}
     def get_queryset(self):
         brand=Brand.objects.get(slug=self.kwargs['slug'])

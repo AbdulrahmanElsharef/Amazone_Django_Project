@@ -24,3 +24,18 @@ products
     -specifications
     -slug
 
+orders:
+        item_code
+         status[received,proceed,shipped,delivered]
+         <!-- total_item -->
+         order_time
+         delivery_time
+         <!-- sub_total
+         discount
+         delivery fee -->
+         <!-- total -->
+         products
+                -name
+                -quantity
+
+          

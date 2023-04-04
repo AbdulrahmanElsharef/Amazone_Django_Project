@@ -57,11 +57,11 @@
                         <p>BRAND:<a href="#">{{object.brand}}</a></p>
                     </div>
                     <div class="details-rating">
-                        <!-- <i class="{% if object.avg_rate >= 1 %} active  {% endif %} icofont-star "></i>
-                        <i class="{% if object.avg_rate >= 2 %} active  {% endif %} icofont-star "></i>
-                        <i class="{% if object.avg_rate >= 3 %} active  {% endif %} icofont-star "></i>
-                        <i class="{% if object.avg_rate >= 4 %} active  {% endif %} icofont-star "></i>
-                        <i class="{% if object.avg_rate >= 5 %} active  {% endif %} icofont-star "></i> -->
+                        <i class="{% if object.avg_rate > 0 %} active {% endif %} icofont-star"></i>
+                        <i class="{% if object.avg_rate > 1 %} active {% endif %} icofont-star"></i>
+                        <i class="{% if object.avg_rate > 2 %} active {% endif %} icofont-star"></i>
+                        <i class="{% if object.avg_rate > 3 %} active {% endif %} icofont-star"></i>
+                        <i class="{% if object.avg_rate > 4 %} active {% endif %} icofont-star"></i>
                         <a href="#">({{object.product_reviews.all|length}}) reviews</a>
                     </div>
                     <h3 class="details-price">
@@ -133,7 +133,7 @@
                 </div>
 
                 <div class="product-details-frame">
-                    <h3 class="frame-title">Reviews ({{object.product_reviews.all.count}})</h3>
+                    <h3 class="frame-title"> ({{object.product_reviews.all.count}}) Reviews</h3>
                     <ul class="review-list">
                         {% for rev in object.product_reviews.all%}
                         <li class="review-item">

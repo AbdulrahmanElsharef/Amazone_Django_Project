@@ -37,15 +37,15 @@ class Product(models.Model):
         self.slug = slugify(self.name)
         super(Product, self).save(*args, **kwargs) # Call the real save() method
 
-    # def avg_rate(self):
-    #     product_reviews = self.product_review.all()
-    #     if len(product_reviews)>0:
-    #         review_sum = 0
-    #         for rate in product_reviews:
-    #             review_sum += rate.rate
-    #         return review_sum/len(product_reviews)
-    #     else:
-    #         return 0
+    def avg_rate(self):
+        product_review=self.product_reviews.all()
+        sum_avg=0
+        if len(product_review) > 0 :
+            for x in product_review:
+                sum_avg += x.rate
+            return round (sum_avg/len(product_review),0)
+        else:
+            return 0
 # ____________________________________________________________
 class ProductImage(models.Model):
     product=models.ForeignKey(Product, verbose_name=_("Product"),on_delete=models.CASCADE,related_name='product_images')

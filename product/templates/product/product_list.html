@@ -6,10 +6,10 @@
         =======================================-->
 <section class="inner-section single-banner" style="background: url(images/single-banner.jpg) no-repeat center;">
     <div class="container">
-        <h2>Shop 4 Column</h2>
+        <h2>Shop Products</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">shop-4column</li>
+            <li class="breadcrumb-item active" aria-current="page">Shop- All_Products</li>
         </ol>
     </div>
 </section>
@@ -368,16 +368,17 @@
                                 <button class="product-wish wish">
                                     <i class="fas fa-heart"></i>
                                 </button>
-                                <a class="product-image" href="product-video.html">
+                                <a class="product-image" href="{% url 'products:Product_Detail' object.slug %}">
                                     <img src="{{object.image.url}}" alt="product">
                                 </a>
-                                <div class="product-widget">
-                                    <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                    <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8"
+                                <!-- <div class="product-widget">
+                                    <a title="Product Compare" href="{% url 'products:Product_Detail' object.slug %}"
+                                        class="fas fa-random"></a>
+                                    <a title="Product Video" href="{% url 'products:Product_Detail' object.slug %}"
                                         class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
-                                    <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal"
-                                        data-bs-target="#product-view"></a>
-                                </div>
+                                    <a title="Product View" href="{% url 'products:Product_Detail' object.slug %}"
+                                        class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                </div> -->
                             </div>
                             <div class="product-content">
                                 <div class="product-rating">
@@ -425,8 +426,9 @@
                                 </li>
                                 {% endif %}
 
-                                <li class="page-item"><a class="page-link active" href="#" style="width: 250px ; border-radius:15px;">
-                                     Page {{page_obj.number }} of {{ page_obj.paginator.num_pages }} </a></li>
+                                <li class="page-item"><a class="page-link active" href="#"
+                                        style="width: 250px ; border-radius:15px;">
+                                        Page {{page_obj.number }} of {{ page_obj.paginator.num_pages }} </a></li>
 
 
                                 {% if page_obj.has_next %}

@@ -213,18 +213,18 @@
             </div>
         </div>
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-            {% for item in related %}
+            {% for object in related %}
             <div class="col">
                 <div class="product-card">
                     <div class="product-media">
                         <div class="product-label">
-                            <label class="label-text sale">{{item.flag}}</label>
+                            <label class="label-text sale">{{object.flag}}</label>
                         </div>
                         <button class="product-wish wish">
                             <i class="fas fa-heart"></i>
                         </button>
                         <a class="product-image" href="product-video.html">
-                            <img src="{{item.image.url}}" alt="product">
+                            <img src="{{object.image.url}}" alt="product">
                         </a>
                         <div class="product-widget">
                             <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
@@ -236,19 +236,19 @@
                     </div>
                     <div class="product-content">
                         <div class="product-rating">
-                            <i class="active icofont-star"></i>
-                            <i class="active icofont-star"></i>
-                            <i class="active icofont-star"></i>
-                            <i class="active icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <a href="product-video.html">(3)</a>
+                            <i class="{% if object.avg_rate > 0 %} active {% endif %} icofont-star"></i>
+                            <i class="{% if object.avg_rate > 1 %} active {% endif %} icofont-star"></i>
+                            <i class="{% if object.avg_rate > 2 %} active {% endif %} icofont-star"></i>
+                            <i class="{% if object.avg_rate > 3 %} active {% endif %} icofont-star"></i>
+                            <i class="{% if object.avg_rate > 4 %} active {% endif %} icofont-star"></i>
+                            <a href="#">({{object.product_reviews.all|length}}) reviews</a>
                         </div>
                         <h6 class="product-name">
-                            <a href="product-video.html">{{item.name}}</a>
+                            <a href="product-video.html">{{object.name}}</a>
                         </h6>
                         <h6 class="product-price">
 
-                            <span>${{item.price}}<small>/piece</small></span>
+                            <span>${{object.price}}<small>/piece</small></span>
                         </h6>
                         <button class="product-add" title="Add to Cart">
                             <i class="fas fa-shopping-basket"></i>

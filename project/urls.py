@@ -19,7 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('product.urls',namespace='products'))
+    path('', include('product.urls',namespace='products')),
+    path('', include('order.urls',namespace='orders')),
 ]
 
 urlpatterns +=  static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

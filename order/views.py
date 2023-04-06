@@ -10,7 +10,8 @@ class OrderList(ListView):
         queryset=Order.objects.filter(user=self.request.user)
         return queryset
     
-
+def checkout(request):
+    return render (request,'order/checkout.html',{})
 class CartList(ListView):
     pass
 

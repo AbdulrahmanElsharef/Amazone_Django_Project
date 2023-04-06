@@ -58,3 +58,16 @@ class OrderDetail(models.Model):
 
     def __str__(self):
         return str(self.order)
+
+
+class Coupon(models.Model):
+    code=models.CharField(_("code"), max_length=30)
+    value=models.DecimalField(_("value"), max_digits=5, decimal_places=2)
+    from_date=models.DateField(_("from_date"), default=timezone.now)
+    to_date=models.DateField(_("from_date"), default=timezone.now)
+    quantity=models.IntegerField(_("quantity"))
+    image=models.ImageField( upload_to='coupon/',null=True,blank=True)
+    
+    def __str__(self):
+        return self.code
+    

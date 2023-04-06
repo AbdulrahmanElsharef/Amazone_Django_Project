@@ -15,4 +15,6 @@ class CartAdmin(admin.ModelAdmin):
 admin.site.register(Cart,CartAdmin)
 admin.site.register(CartDetail)
 admin.site.register(Order,OrderAdmin)
-admin.site.register(OrderDetail,)
+admin.site.register(OrderDetail)
+admin.site.register(Coupon)
+

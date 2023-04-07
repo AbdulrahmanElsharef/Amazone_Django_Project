@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.urls import path
 from . views import ProductList,ProductDetail,add_review,BrandList,BrandDetail
-from .api import ProductListApi,ProductDetailUpdateApi
+from .api import ProductListApi,ProductDetailUpdateApi,BrandListApi
 app_name='product'
 
 urlpatterns = [
     path('products/api/list',ProductListApi.as_view(),name='product_list_api'),
+    path('brands/api/list',BrandListApi.as_view(),name='brand_list_api'),
     path('products/api/list/<slug:slug>',ProductDetailUpdateApi.as_view(),name='product_detail_Update_api'),
 
     

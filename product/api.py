@@ -4,6 +4,8 @@ from .serializers import ProductListSerializer,ProductDetailSerializer,BrandList
 from .models import *
 from rest_framework import generics
 from utils.my_pagination import ProductPagination
+from rest_framework import filters
+
 
 # @api_view(['GET'])
 # def product_list_api(request):
@@ -16,6 +18,9 @@ class ProductListApi(generics.ListAPIView):
     serializer_class = ProductListSerializer
     queryset = Product.objects.all()
     pagination_class=ProductPagination
+    filter_backends = [filters.SearchFilter,filters.OrderingFilter]
+    search_fields = ['name', 'flag','price']
+    ordering_fields = ['flag', 'price','name']
     
 class ProductDetailUpdateApi(generics.RetrieveAPIView):
     serializer_class = ProductDetailSerializer
@@ -26,6 +31,10 @@ class ProductDetailUpdateApi(generics.RetrieveAPIView):
 class BrandListApi(generics.ListAPIView):
     serializer_class = BrandListSerializer
     queryset = Brand.objects.all()
+    filter_backends = [filters.SearchFilter,filters.OrderingFilter]
+    search_fields = ['name',]
+    ordering_fields = ['slug',]
+    
 
 class BrandDetailUpdateApi(generics.RetrieveAPIView):
     serializer_class = BrandDetailSerializer

@@ -14,7 +14,7 @@ from rest_framework import generics
 
 class ProductListApi(generics.ListAPIView):
     serializer_class = ProductListSerializer
-    queryset = Product.objects.all()[:30]
+    queryset = Product.objects.all()
     
 class ProductDetailUpdateApi(generics.RetrieveAPIView):
     serializer_class = ProductDetailSerializer

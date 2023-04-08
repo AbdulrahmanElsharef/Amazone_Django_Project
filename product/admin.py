@@ -8,6 +8,9 @@ class ReviewInline(admin.TabularInline):
 
 class ProductAdmin(admin.ModelAdmin):
     inlines = [ImageInline,ReviewInline]
+    list_display = ['id','name', 'price']
+    list_filter=['brand','flag']
+    search_fields=['name','subtitle','slug']
 
 admin.site.register(Brand)
 admin.site.register(Product,ProductAdmin)

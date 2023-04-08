@@ -7,15 +7,14 @@ class ProductReviewSerializer(serializers.ModelSerializer):
     user=serializers.StringRelatedField()
     class Meta:
         model = ProductReview
-        # fields=['user','rate','review','date']
-        exclude=['id','product']
+        fields=['user','rate','review','date']
+        # exclude=['id','product']
         
 class ProductImageSerializer(serializers.ModelSerializer):
-    user=serializers.StringRelatedField()
+    # user=serializers.StringRelatedField()
     class Meta:
         model = ProductImage
-        # fields=['user','rate','review','date']
-        exclude=['id','product']
+        fields=['image',]
 class ProductListSerializer(serializers.ModelSerializer):
     brand=serializers.StringRelatedField()
     class Meta:
@@ -36,7 +35,7 @@ class BrandListSerializer(serializers.ModelSerializer):
     # product=ProductListSerializer(source='product_brand',many=True)
     class Meta:
         model = Brand
-        exclude=['id',]
+        fields=['name','image','slug']
 class BrandDetailSerializer(serializers.ModelSerializer):
     product=ProductListSerializer(source='product_brand',many=True)
     class Meta:

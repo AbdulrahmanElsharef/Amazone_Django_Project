@@ -6,6 +6,7 @@ app_name='product'
 
 urlpatterns = [
     #api
+
     path('api/list',ProductListApi.as_view(),name='product_list_api'),
     path('api/list/brands',BrandListApi.as_view(),name='brand_list_api'),
     path('api/list/<slug:slug>',ProductDetailUpdateApi.as_view(),name='product_detail_Update_api'),

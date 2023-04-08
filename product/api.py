@@ -11,14 +11,7 @@ from rest_framework import generics
 #     data=ProductSerializer(products,many=True).data[:50]
 #     return Response({'data':data})
 
-class BrandListApi(generics.ListAPIView):
-    serializer_class = BrandListSerializer
-    queryset = Brand.objects.all()
 
-class BrandDetailUpdateApi(generics.RetrieveAPIView):
-    serializer_class = BrandDetailSerializer
-    queryset = Brand.objects.all()
-    lookup_field='slug'
 class ProductListApi(generics.ListAPIView):
     serializer_class = ProductListSerializer
     queryset = Product.objects.all()[:30]
@@ -26,4 +19,14 @@ class ProductListApi(generics.ListAPIView):
 class ProductDetailUpdateApi(generics.RetrieveAPIView):
     serializer_class = ProductDetailSerializer
     queryset = Product.objects.all()
+    lookup_field='slug'
+    
+    
+class BrandListApi(generics.ListAPIView):
+    serializer_class = BrandListSerializer
+    queryset = Brand.objects.all()
+
+class BrandDetailUpdateApi(generics.RetrieveAPIView):
+    serializer_class = BrandDetailSerializer
+    queryset = Brand.objects.all()
     lookup_field='slug'

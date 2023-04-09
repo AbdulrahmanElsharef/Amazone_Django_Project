@@ -5,6 +5,7 @@ from .models import *
 from rest_framework import generics
 from utils.my_pagination import ProductPagination
 from rest_framework import filters
+from rest_framework.permissions import IsAuthenticated
 
 
 # @api_view(['GET'])
@@ -14,15 +15,16 @@ from rest_framework import filters
 #     return Response({'data':data})
 
 
-class ProductListApi(generics.ListAPIView):
+class ProductListApi(generics.ListCreateAPIView):
     serializer_class = ProductListSerializer
     queryset = Product.objects.all()
     pagination_class=ProductPagination
     filter_backends = [filters.SearchFilter,filters.OrderingFilter]
     search_fields = ['name', 'flag','price']
     ordering_fields = ['flag', 'price','name']
+    permission_classes=[IsAuthenticated]
     
-class ProductDetailUpdateApi(generics.RetrieveAPIView):
+class ProductDetailUpdateApi(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ProductDetailSerializer
     queryset = Product.objects.all()
     lookup_field='slug'
@@ -34,6 +36,7 @@ class BrandListApi(generics.ListAPIView):
     filter_backends = [filters.SearchFilter,filters.OrderingFilter]
     search_fields = ['name',]
     ordering_fields = ['slug',]
+    permission_classes=[IsAuthenticated]
     
 
 class BrandDetailUpdateApi(generics.RetrieveAPIView):

@@ -23,9 +23,9 @@ class CartDetail(models.Model):
         "cart_detail"), related_name='cart_detail', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, verbose_name=_(
         "product_cart"), related_name='product_cart', on_delete=models.SET_NULL, null=True, blank=True)
-    quantity = models.IntegerField(_("quantity"))
-    price = models.DecimalField(_("price"), max_digits=5, decimal_places=2)
-    total = models.DecimalField(_("total"), max_digits=5, decimal_places=2)
+    quantity = models.IntegerField(_("quantity"),null=True,blank=True)
+    price = models.DecimalField(_("price"), max_digits=5, decimal_places=2,null=True,blank=True)
+    total = models.DecimalField(_("total"), max_digits=5, decimal_places=2,null=True,blank=True)
 
     def __str__(self):
         return str(self.cart)

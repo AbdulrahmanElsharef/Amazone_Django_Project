@@ -396,10 +396,13 @@
 
                                     <span>${{object.price}}<small>/piece</small></span>
                                 </h6>
-                                <button class="product-add" title="Add to Cart">
-                                    <i class="fas fa-shopping-basket"></i>
-                                    <span>add</span>
-                                </button>
+                                <form action="{%url 'orders:add_to_Cart'%}" method="post"  >
+                                    {% csrf_token %}
+                                    <!-- <input type="text" > -->
+                                    <input value="{{object.id}}" name="productid"  type="hidden"  value="" >
+                                    <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1" style="border-radius: 6px; width: 100%; text-align: center;" >
+                                    <input class="product-add" title="Add to Cart"  type="submit" value="add to cart">
+                                </form>
                                 <div class="product-action">
                                     <button class="action-minus" title="Quantity Minus"><i
                                             class="icofont-minus"></i></button>

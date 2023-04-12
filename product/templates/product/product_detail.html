@@ -88,24 +88,23 @@
                         </ul>
                     </div>
                     <div class="details-add-group">
-                        <button class="product-add" title="Add to Cart">
-                            <i class="fas fa-shopping-basket"></i>
-                            <span>add to cart</span>
-                        </button>
-                        <div class="product-action">
+                        <form action="{%url 'orders:add_to_Cart'%}" method="post"  >
+                            {% csrf_token %}
+                            <!-- <input type="text" > -->
+                            <input value="{{object.id}}" name="productid"  type="hidden"  value="" >
+                            <input class="product-add" title="Quantity Number" type="text" name="quantity" value="1" style="border-radius: 6px; width: 100%; text-align: center;" >
+                            <input class="product-add" title="Add to Cart"  type="submit" value="add to cart">
+                        </form>
+                        <!-- <div class="product-action">
                             <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
                             <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
                             <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="details-action-group">
                         <a class="details-wish wish" href="#" title="Add Your Wishlist">
                             <i class="icofont-heart"></i>
                             <span>add to wish</span>
-                        </a>
-                        <a class="details-compare" href="compare.html" title="Compare This Item">
-                            <i class="fas fa-random"></i>
-                            <span>Compare This</span>
                         </a>
                     </div>
                 </div>

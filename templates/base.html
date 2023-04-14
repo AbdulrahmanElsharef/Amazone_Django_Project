@@ -105,12 +105,12 @@
             <div class="header-content">
                 <div class="header-media-group">
                     <button class="header-user"><img src="images/user.png" alt="user"></button>
-                    <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+                    <a href="index.html"><img src="{{company.logo.url}}" alt="logo"></a>
                     <button class="header-src"><i class="fas fa-search"></i></button>
                 </div>
 
                 <a href="index.html" class="header-logo">
-                    <img src="images/logo.png" alt="logo">
+                    <img src="{{company.logo.url}}" alt="logo">
                 </a>
                 <a href="login.html" class="header-widget" title="My Account">
                     <img src="images/user.png" alt="user">
@@ -133,7 +133,7 @@
                     </a>
                     <button class="header-widget header-cart" title="Cartlist">
                         <i class="fas fa-shopping-basket"></i>
-                        <sup>9+</sup>
+                        <sup>{{cart|length}}+</sup>
                         <span>total price<small>$345.00</small></span>
                     </button>
                 </div>
@@ -172,14 +172,14 @@
                                 <i class="icofont-ui-touch-phone"></i>
                                 <p>
                                     <small>call us</small>
-                                    <span>(+880) 183 8288 389</span>
+                                    <span>{{company.call_us}}</span>
                                 </p>
                             </div>
                             <div class="navbar-info">
                                 <i class="icofont-ui-email"></i>
                                 <p>
                                     <small>email us</small>
-                                    <span>support@greeny.com</span>
+                                    <span>{{company.email_us}}</span>
                                 </p>
                             </div>
                         </div>
@@ -355,20 +355,21 @@
         <div class="cart-header">
             <div class="cart-total">
                 <i class="fas fa-shopping-basket"></i>
-                <span>total item (5)</span>
+                <span>total item ({{cart|length}})</span>
             </div>
             <button class="cart-close"><i class="icofont-close"></i></button>
         </div>
         <ul class="cart-list">
+            {% for object in cart.cart_detail.all %}
             <li class="cart-item">
                 <div class="cart-media">
-                    <a href="#"><img src="images/product/01.jpg" alt="product"></a>
+                    <a href="#"><img src="{{object.product.image.url}}" alt="product"></a>
                     <button class="cart-delete"><i class="far fa-trash-alt"></i></button>
                 </div>
                 <div class="cart-info-group">
                     <div class="cart-info">
-                        <h6><a href="product-single.html">existing product name</a></h6>
-                        <p>Unit Price - $8.75</p>
+                        <h6><a href="product-single.html">{{object.product}}</a></h6>
+                        <p>Unit Price - ${{object.price}}</p>
                     </div>
                     <div class="cart-action-group">
                         <div class="product-action">
@@ -376,97 +377,14 @@
                             <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
                             <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
                         </div>
-                        <h6>$56.98</h6>
+                        <h6>${{object.total}}</h6>
                     </div>
                 </div>
             </li>
-            <li class="cart-item">
-                <div class="cart-media">
-                    <a href="#"><img src="images/product/02.jpg" alt="product"></a>
-                    <button class="cart-delete"><i class="far fa-trash-alt"></i></button>
-                </div>
-                <div class="cart-info-group">
-                    <div class="cart-info">
-                        <h6><a href="product-single.html">existing product name</a></h6>
-                        <p>Unit Price - $8.75</p>
-                    </div>
-                    <div class="cart-action-group">
-                        <div class="product-action">
-                            <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                            <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                        </div>
-                        <h6>$56.98</h6>
-                    </div>
-                </div>
-            </li>
-            <li class="cart-item">
-                <div class="cart-media">
-                    <a href="#"><img src="images/product/03.jpg" alt="product"></a>
-                    <button class="cart-delete"><i class="far fa-trash-alt"></i></button>
-                </div>
-                <div class="cart-info-group">
-                    <div class="cart-info">
-                        <h6><a href="product-single.html">existing product name</a></h6>
-                        <p>Unit Price - $8.75</p>
-                    </div>
-                    <div class="cart-action-group">
-                        <div class="product-action">
-                            <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                            <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                        </div>
-                        <h6>$56.98</h6>
-                    </div>
-                </div>
-            </li>
-            <li class="cart-item">
-                <div class="cart-media">
-                    <a href="#"><img src="images/product/04.jpg" alt="product"></a>
-                    <button class="cart-delete"><i class="far fa-trash-alt"></i></button>
-                </div>
-                <div class="cart-info-group">
-                    <div class="cart-info">
-                        <h6><a href="product-single.html">existing product name</a></h6>
-                        <p>Unit Price - $8.75</p>
-                    </div>
-                    <div class="cart-action-group">
-                        <div class="product-action">
-                            <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                            <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                        </div>
-                        <h6>$56.98</h6>
-                    </div>
-                </div>
-            </li>
-            <li class="cart-item">
-                <div class="cart-media">
-                    <a href="#"><img src="images/product/05.jpg" alt="product"></a>
-                    <button class="cart-delete"><i class="far fa-trash-alt"></i></button>
-                </div>
-                <div class="cart-info-group">
-                    <div class="cart-info">
-                        <h6><a href="product-single.html">existing product name</a></h6>
-                        <p>Unit Price - $8.75</p>
-                    </div>
-                    <div class="cart-action-group">
-                        <div class="product-action">
-                            <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                            <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                        </div>
-                        <h6>$56.98</h6>
-                    </div>
-                </div>
-            </li>
+            {% endfor %}
         </ul>
         <div class="cart-footer">
-            <button class="coupon-btn">Do you have a coupon code?</button>
-            <form class="coupon-form">
-                <input type="text" placeholder="Enter your coupon code">
-                <button type="submit"><span>apply</span></button>
-            </form>
+
             <a class="cart-checkout-btn" href="checkout.html">
                 <span class="checkout-label">Proceed to Checkout</span>
                 <span class="checkout-price">$369.78</span>
@@ -627,7 +545,7 @@
         <button class="cart-btn" title="Cartlist">
             <i class="fas fa-shopping-basket"></i>
             <span>cartlist</span>
-            <sup>9+</sup>
+            <sup>{{cart|length}}+</sup>
         </button>
         <a href="wishlist.html" title="Wishlist">
             <i class="fas fa-heart"></i>
@@ -767,15 +685,14 @@
                 <div class="col-sm-6 col-xl-3">
                     <div class="footer-widget">
                         <a class="footer-logo" href="#">
-                            <img src="images/logo.png" alt="logo">
+                            <img src="{{company.logo.url}}" alt="logo">
                         </a>
-                        <p class="footer-desc">Adipisci asperiores ipsum ipsa repellat consequatur repudiandae quisquam
-                            assumenda dolor perspiciatis sit ipsum dolor amet.</p>
+                        <p class="footer-desc">{{company.about}}.</p>
                         <ul class="footer-social">
-                            <li><a class="icofont-facebook" href="#"></a></li>
-                            <li><a class="icofont-twitter" href="#"></a></li>
+                            <li><a class="icofont-facebook" href="{{company.fb_link}}"></a></li>
+                            <li><a class="icofont-twitter" href="{{company.tw_link}}"></a></li>
                             <li><a class="icofont-linkedin" href="#"></a></li>
-                            <li><a class="icofont-instagram" href="#"></a></li>
+                            <li><a class="icofont-instagram" href="{{company.inst_link}}"></a></li>
                             <li><a class="icofont-pinterest" href="#"></a></li>
                         </ul>
                     </div>
@@ -787,20 +704,18 @@
                             <li>
                                 <i class="icofont-ui-email"></i>
                                 <p>
-                                    <span>support@greeny.com</span>
-                                    <span>carrer@greeny.com</span>
+                                    <span>{{company.emails}}</span>
                                 </p>
                             </li>
                             <li>
                                 <i class="icofont-ui-touch-phone"></i>
                                 <p>
-                                    <span>+120 279 532 13</span>
-                                    <span>+120 279 532 14</span>
+                                    <span>{{company.phones}}</span>
                                 </p>
                             </li>
                             <li>
                                 <i class="icofont-location-pin"></i>
-                                <p>1Hd- 50, 010 Avenue, NY 90001 United States</p>
+                                <p>{{company.address}}</p>
                             </li>
                         </ul>
                     </div>

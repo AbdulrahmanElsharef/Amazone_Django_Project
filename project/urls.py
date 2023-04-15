@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('product.urls',namespace='products')),
     path('', include('order.urls',namespace='orders')),
+    path('__debug__/', include('debug_toolbar.urls')),
 ]
 
 urlpatterns +=  static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

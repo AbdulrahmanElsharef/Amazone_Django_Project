@@ -1,0 +1,6 @@
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: django-debug-toolbar in c:\users\user\appdata\roaming\python\python311\site-packages (3.8.1)
+Requirement already satisfied: django>=3.2.4 in c:\program files\python311\lib\site-packages (from django-debug-toolbar) (4.2)
+Requirement already satisfied: sqlparse>=0.2 in c:\program files\python311\lib\site-packages (from django-debug-toolbar) (0.4.3)
+Requirement already satisfied: asgiref<4,>=3.6.0 in c:\program files\python311\lib\site-packages (from django>=3.2.4->django-debug-toolbar) (3.6.0)
+Requirement already satisfied: tzdata in c:\users\user\appdata\roaming\python\python311\site-packages (from django>=3.2.4->django-debug-toolbar) (2022.6)

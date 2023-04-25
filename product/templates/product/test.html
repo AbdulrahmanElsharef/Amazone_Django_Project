@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>sum of all products{{sum}}</h3>
+    <h3>max of all products{{max}}</h3>
+    <h3>min of all products{{min}}</h3>
+    {% for item in data %}
+    <h3>{{item.name}} --- {{item.price}}--{{item.price_tax}} </h3>
+    <!-- <h2>{{item.flag}}</h2> -->
+
+    <!-- <h4>{{item.sku}}</h4> -->
+    <!-- <img src="{{item.image.url}}" alt="">
+    <h5>{{item.description}}</h5> -->
+    {% endfor %}
+</body>
+</html>

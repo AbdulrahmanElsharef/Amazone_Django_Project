@@ -5,15 +5,16 @@ from django.views.generic import ListView,DetailView
 from .forms import ProductReviewForm
 from django.db.models import Q,F
 from django.db.models.aggregates import     Sum,Max,Min
+from django.views.decorators.cache import cache_page
 
-
+@ cache_page(60)
 def test(request):
     # data=Product.objects.filter(
     #     Q(name__icontains="Emily") |
     #     Q(price__lt=45))
-    sum=Product.objects.aggregate(Sum('price'))
-    max=Product.objects.aggregate(Max('price'))
-    min=Product.objects.aggregate(Min('price'))
+    # sum=Product.objects.aggregate(Sum('price'))
+    # max=Product.objects.aggregate(Max('price'))
+    # min=Product.objects.aggregate(Min('price'))
     data=Product.objects.annotate(price_tax=F('price')*10/100)
 
     context={'sum':sum,'max':max,'min':min,'data':data}

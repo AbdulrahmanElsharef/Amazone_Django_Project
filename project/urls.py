@@ -22,6 +22,8 @@ urlpatterns = [
     path('', include('product.urls',namespace='products')),
     path('', include('order.urls',namespace='orders')),
     path('__debug__/', include('debug_toolbar.urls')),
+    path("i18n/", include("django.conf.urls.i18n")),
+
 ]
 
 urlpatterns +=  static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
